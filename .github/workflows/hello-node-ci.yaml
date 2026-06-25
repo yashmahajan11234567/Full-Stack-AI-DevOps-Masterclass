@@ -20,11 +20,11 @@ jobs:
                     node-version: '25'
 
             - name: install Dependencies
-              working-directory: Devops/app2-hello/node
+              working-directory: Devops/app1-hello/node
               run: npm ci
 
             - name: Run Tests
-              working-directory: Devops/app2-hello/node
+              working-directory: Devops/app1d-hello/node
               run: npm test -- if-present 
 
     docker-build-push:
