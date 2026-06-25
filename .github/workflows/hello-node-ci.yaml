@@ -1,0 +1,57 @@
+name: Second CI
+
+on:
+    push:
+        # path: ""
+    workflow_dispatch:   
+
+jobs:
+    build-test:
+        runs-on: ubuntu-latest
+
+        steps:
+
+            - name: checkout code
+              uses: actions/checkout@v7
+
+            - name: setup Node.js
+              uses: actions/setup-node@v6
+              with:
+                    node-version: '25'
+
+            - name: install Dependencies
+              working-directory: Devops/app2-hello/node
+              run: npm ci
+
+            - name: Run Tests
+              working-directory: Devops/app2-hello/node
+              run: npm test -- if-present 
+
+    docker-build-push:
+
+        runs-on: ubuntu-latest
+        needs: build-test
+        steps:
+
+            - name: checkout code
+              uses: actions/checkout@v7
+
+            - name: Login to DockerHub
+              uses: docker/login-action@v4
+              with:
+                    username: ${{ secrets.DOCKER_USERNAME }}
+                    password: ${{ secrets.DOCKER_PASSWORD }}
+
+            - name: Build and Push Docker Image
+              uses: docker/build-push-action@v7
+              with:
+                    context: Devops/app2-hello/node
+                    push: true
+                    tags: |
+                        ${{ secrets.DOCKER_USERNAME }}/hello-node:latest
+
+
+
+
+           
+
