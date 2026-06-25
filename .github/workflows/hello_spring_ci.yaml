@@ -60,6 +60,6 @@ jobs:
               with:
                     context: Devops/app1-hello/springboot/hello-spring
                     push: true
-                    tags: ${{secrets.DOCKER_USERNAME}}/hello-spring:latest
+                    tags: ${{ secrets.DOCKER_USERNAME}}/hello-spring:latest
 
 
