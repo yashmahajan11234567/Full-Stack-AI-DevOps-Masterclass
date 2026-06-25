@@ -28,7 +28,7 @@ jobs:
               with:
                     name: test-reports
 
-                    path: Devops/app1-hello/sprinboot/hello-spring/target/surefire-reports
+                    path: Devops/app1-hello/springboot/hello-spring/target/surefire-reports
 
 
     docker-build-push:
