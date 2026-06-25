@@ -11,7 +11,7 @@ jobs:
         steps:
 
             - name: checkout code
-              run: actions/checkout@v4a
+              uses: actions/checkout@v4
 
             - name: setup JDK
               uses: actions/setup-java@v5
