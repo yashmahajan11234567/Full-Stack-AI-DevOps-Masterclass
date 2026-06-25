@@ -1,4 +1,4 @@
-name: Second CI
+name: app1-hello-node 
 
 on:
     push:
@@ -24,7 +24,7 @@ jobs:
               run: npm ci
 
             - name: Run Tests
-              working-directory: Devops/app1d-hello/node
+              working-directory: Devops/app1-hello/node
               run: npm test -- if-present 
 
     docker-build-push:
