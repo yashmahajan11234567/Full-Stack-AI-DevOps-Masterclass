@@ -37,7 +37,7 @@ jobs:
         steps:
 
             - name: checkout code
-              run: echo "Hello from the second workflow"
+              uses: actions/checkout@v4
 
             - name: setup JDK
               run: echo ""
